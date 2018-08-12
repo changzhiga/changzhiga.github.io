@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Teishikaa&#39;s Blog">
 <meta property="og:description" content="How to build up raspberrypi system">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-12T18:27:45.725Z">
+<meta property="og:updated_time" content="2018-08-12T18:30:52.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberry Pi 系统建立流程">
 <meta name="twitter:description" content="How to build up raspberrypi system">
@@ -354,7 +354,7 @@
 <h3 id="2-3-Samba"><a href="#2-3-Samba" class="headerlink" title="2.3 Samba"></a>2.3 Samba</h3><ul>
 <li>修改系统软件源为阿里云：</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    sudo nano /etc/apt/sources.list</span><br><span class="line">```     </span><br><span class="line">    将 `deb` 后的 URL 修改为 `http://mirrors.aliyun.com/raspbian/raspbian/`，保存。</span><br><span class="line">       </span><br><span class="line">* 刷新软件列表：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    sudo nano /etc/apt/sources.list</span><br><span class="line">```     </span><br><span class="line"></span><br><span class="line">将 `deb` 后的 URL 修改为 `http://mirrors.aliyun.com/raspbian/raspbian/`，保存。</span><br><span class="line">       </span><br><span class="line">* 刷新软件列表：</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装 Samba 及其依赖：</li>
 </ul>
