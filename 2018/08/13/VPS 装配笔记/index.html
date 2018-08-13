@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vps," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="VPS Configuration">
+<meta name="keywords" content="vps">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS 装配笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/VPS 装配笔记/index.html">
+<meta property="og:site_name" content="Teishikaa&#39;s Blog">
+<meta property="og:description" content="VPS Configuration">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-13T16:10:08.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS 装配笔记">
+<meta name="twitter:description" content="VPS Configuration">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/13/VPS 装配笔记/"/>
+
+
+
+
+
+  <title>VPS 装配笔记 | Teishikaa's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Teishikaa's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/VPS 装配笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="changzhiga">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Teishikaa's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VPS 装配笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T23:31:58+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  VPS Configuration
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在购买一台 VPS 并成功启动之后，需要进行相关的装配设置，使其融入 Mac 的工作流。  </p>
+</blockquote>
+<h2 id="1-前期"><a href="#1-前期" class="headerlink" title="1. 前期"></a>1. 前期</h2><p>按照既定格式为 VPS 主机命名，约定格式为：</p>
+<p><strong><code>主机商/平台名三位缩略字母 - 主机所在国家/城市名两位缩略字母 + 数字编号</code></strong></p>
+<p>如 Google Cloud Platform 为 <code>gcp</code>，GigsgigsCloud 为 <code>ggs</code>，Vultr 为 <code>vtr</code>，以此类推；地名如 Taiwan 为 <code>tw</code>，Tokyo 为 <code>tk</code>。故有 <code>gcp-tw</code>、<code>ggs-hk</code>、<code>vtr-nj1</code> 等，主机名全部使用小写。</p>
+<p>考虑到部分主机商的 CentOS 和 Debian 有大大小小的问题，故操作系统首选 Ubuntu 最新版本，保守选择 Ubuntu 16.04 LTS（Xenial Xerus）。</p>
+<h2 id="2-关键信息预存"><a href="#2-关键信息预存" class="headerlink" title="2. 关键信息预存"></a>2. 关键信息预存</h2><p>首先存储 IP 可以方便后续的使用。主机正常运行后，使用 LaunchBar 的 Snippets 存储 各个主机的外部 IP，以主机名的 <strong><code>首字母（重复则使用前两位） + 地名（数字编码）</code></strong> 共三或四位字母作为 Snippets 的快捷短语；如 <code>gtw</code>，<code>gghk</code>。</p>
+<h2 id="3-SSH-连接"><a href="#3-SSH-连接" class="headerlink" title="3. SSH 连接"></a>3. SSH 连接</h2><ol>
+<li><p>生成公钥和私钥，必要时将公钥复制到主机的 SSH 添加处（<code>~/.ssh/authorized_keys</code>）。</p>
+<pre><code class="shell"> ssh-keygen -t rsa -f ~/.ssh/[[主机名]] -C [[用户名]]
+</code></pre>
+<p> <code>[[主机名]]</code> 按照前期命名填写，<code>[[用户名]]</code> 为 <code>changzhiga</code>。</p>
+</li>
+<li><p>某些主机可能需要通过 <code>ssh-copy-id</code> 命令添加公钥：</p>
+<pre><code class="shell"> ssh-copy-id -i ~/.ssh/[[主机对应的公钥]] [[用户名]]@IP
+</code></pre>
+<p> 公钥文件后缀为 <code>.pub</code>，<code>[[用户名]]</code> 为 <code>changzhiga</code>。</p>
+</li>
+<li><p>通过终端 SSH 登录 root 账户，使用 Auto Config 添加主机到 HyperApp。观察 HyperApp 的 Docker 状态是否异常，如异常则需考虑重新安装系统；一般情况下会显示无法找到 <code>docker</code> 命令，说明系统需要安装 Docker。同时在终端测试 <code>sudo</code> 和 <code>docker</code> 命令，进一步确认系统是否正常。</p>
+<pre><code class="shell"> ssh root@IP
+</code></pre>
+</li>
+<li><p>确认系统正常后，在 root 账户下添加自定义用户并为其赋予 root 权限：</p>
+<pre><code class="shell"> adduser [[用户名]] \
+ usermod -aG sudo [[用户名]] \
+ su - [[用户名]]
+</code></pre>
+</li>
+<li><p>设置免密码登录</p>
+<p> 往<code>~/.ssh/config</code>配置文件添加 ssh 服务器信息即可实现别名登录而无需记住用户名和 IP 地址：</p>
+<pre><code class="shell"> vim ~/.ssh/config
+</code></pre>
+<p> 编辑如下：</p>
+<pre><code class="shell"> Host    alias   # 自定义别名
+ HostName    hostname    # ssh 服务器的 IP 或域名
+ Port    22  # ssh 服务器的端口，默认为22
+ User    root    # ssh 服务器用户名
+ IdentityFile    ~/.ssh/id_rsa   # 第一步生成的公钥文件对应的私钥文件
+</code></pre>
+<p> 最终，只需要在 Terminal 输入<code>ssh alias</code>即可。</p>
+</li>
+<li><p>延长 SSH 会话超时时间</p>
+<ul>
+<li><p>服务器端配置</p>
+<pre><code class="shell">vim /etc/ssh/sshd_config
+</code></pre>
+<p>找到以下配置（默认被注释掉，需要取消注释）：</p>
+<pre><code class="shell">ClientAliveInterval 30
+ClientAliveCountMax 3
+</code></pre>
+<p><strong>ClientAliveInterval</strong>：SSH Server 与 Client 的心跳超时时间。当客户端没有指令过来，Server 间隔 ClientAliveInterval 的时间（单位秒）会发一个空包到 Client 来维持心跳，保证 Session 有效。   </p>
+<p><strong>ClientAliveCountMax</strong>：当心跳包发送失败时重试的次数，比如设置成了3，如果 Server 向 Client 连续发三次心跳包都失败了，就会断开这个 Session 连接。  </p>
+<p>修改完后重启 ssh 以使之生效：</p>
+<pre><code class="shell">/etc/init.d/ssh restart
+</code></pre>
+<p>或 </p>
+<pre><code>service ssh restart
+</code></pre></li>
+<li><p>客户端配置</p>
+<p>比起修改服务器端的配置，修改客户端更加容易一些。</p>
+<pre><code class="shell">~/.ssh/config
+</code></pre>
+<p>修改以下内容：</p>
+<pre><code>Host myhostshortcut
+HostName myhost.com
+User root
+ServerAliveInterval 30
+ServerAliveCountMax 3
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h2 id="4-一系列初始化脚本"><a href="#4-一系列初始化脚本" class="headerlink" title="4. 一系列初始化脚本"></a>4. 一系列初始化脚本</h2><h3 id="4-1-安装-Docker"><a href="#4-1-安装-Docker" class="headerlink" title="4.1 安装 Docker"></a>4.1 安装 Docker</h3><ol>
+<li><p>Ubuntu</p>
+<ul>
+<li><p>设置仓库</p>
+<ul>
+<li><p>更新 <code>apt</code> package index：</p>
+<pre><code class="shell">  sudo apt-get update
+</code></pre>
+</li>
+<li><p>安装依赖包以允许 <code>apt</code> 通过 HTTPS 使用仓库：</p>
+<pre><code class="shell">  sudo apt-get install \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  software-properties-common
+</code></pre>
+</li>
+<li><p>添加 Docker 官方 GPG key：</p>
+<pre><code class="shell">  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre>
+</li>
+<li><p>验证 GPG key 已安装：</p>
+<pre><code class="shell">  sudo apt-key fingerprint 0EBFCD88
+</code></pre>
+<p>显示以下内容说明安装成功：</p>
+<pre><code class="shell">pub   4096R/0EBFCD88 2017-02-22
+Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid                  Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   4096R/F273FCD8 2017-02-22
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>安装 Docker</p>
+<ul>
+<li><p>配置稳定版的仓库：</p>
+<pre><code class="shell">  sudo add-apt-repository \
+  &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable&quot;
+</code></pre>
+</li>
+<li><p>安装 Docker CE</p>
+<ul>
+<li><p>更新 <code>apt</code> package index：</p>
+<pre><code class="shell">  sudo apt-get update
+</code></pre>
+</li>
+<li><p>安装：</p>
+<pre><code class="shell">  sudo apt-get install docker-ce
+</code></pre>
+</li>
+<li><p>测试是否安装成功：</p>
+<pre><code class="shell">  sudo docker run hello-world
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CentOS</p>
+<ul>
+<li><p>设置仓库</p>
+<ul>
+<li><p>安装 <code>yum-utils</code>：</p>
+<pre><code class="shell">  sudo yum install -y yum-utils
+</code></pre>
+</li>
+<li><p>建立稳定的仓库：</p>
+<pre><code class="shell">  sudo yum-config-manager \
+--add-repo \
+https://docs.docker.com/v1.13/engine/installation/linux/repo_files/centos/docker.repo
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>安装 Docker</p>
+<ul>
+<li><p>更新 <code>yum package index</code>：</p>
+<pre><code class="shell">  sudo yum makecache fast
+</code></pre>
+</li>
+<li><p>安装最新版本的 Docker：</p>
+<pre><code class="shell">  sudo yum -y install docker-engine
+</code></pre>
+</li>
+<li><p>运行 Docker：</p>
+<pre><code class="shell">  sudo systemctl start docker
+</code></pre>
+</li>
+<li><p>测试运行状态：</p>
+<pre><code class="shell">  sudo docker run hello-world
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-2-使用-HyperApp-自动安装-BBR。"><a href="#4-2-使用-HyperApp-自动安装-BBR。" class="headerlink" title="4.2 使用 HyperApp 自动安装 BBR。"></a>4.2 使用 HyperApp 自动安装 BBR。</h3><h3 id="4-3-使用一键脚本安装"><a href="#4-3-使用一键脚本安装" class="headerlink" title="4.3 使用一键脚本安装"></a>4.3 使用一键脚本安装</h3><pre><code class="shell">wget --no-check-certificate -O ssss-U.sh https://raw.githubusercontent.com/uselibrary/Update_VPS/master/ssss-U.sh &amp;&amp; chmod +x ssss-U.sh &amp;&amp; bash ssss-U.sh
+</code></pre>
+<h2 id="5-后期"><a href="#5-后期" class="headerlink" title="5. 后期"></a>5. 后期</h2><ol>
+<li><p>使用 HyperApp 安装各种所需的 App。</p>
+</li>
+<li><p>在 <code>~/.ssh/config</code> 中添加 SSH 登录的快捷短语，同 Snippets 的规则一致。</p>
+</li>
+<li><p>Surge 中的节点命名规则为：</p>
+<p> <strong><code>国旗 + 大写主机名</code></strong></p>
+<p> 如 <code>🇼🇸 GCP-TW</code>、<code>🇭🇰 GGS-HK</code>。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vps/" rel="tag"># vps</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/Raspberrypi 装配笔记/" rel="next" title="Raspberrypi 装配笔记">
+                <i class="fa fa-chevron-left"></i> Raspberrypi 装配笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">changzhiga</p>
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期"><span class="nav-number">1.</span> <span class="nav-text">1. 前期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-关键信息预存"><span class="nav-number">2.</span> <span class="nav-text">2. 关键信息预存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SSH-连接"><span class="nav-number">3.</span> <span class="nav-text">3. SSH 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-一系列初始化脚本"><span class="nav-number">4.</span> <span class="nav-text">4. 一系列初始化脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-安装-Docker"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-使用-HyperApp-自动安装-BBR。"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 使用 HyperApp 自动安装 BBR。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-使用一键脚本安装"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 使用一键脚本安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-后期"><span class="nav-number">5.</span> <span class="nav-text">5. 后期</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">changzhiga</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
