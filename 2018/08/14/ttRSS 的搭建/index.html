@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vps," />
+  <meta name="keywords" content="ttrss," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="VPS Configuration">
-<meta name="keywords" content="vps">
+<meta name="description" content="ttRSS 搭建指南">
+<meta name="keywords" content="ttrss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VPS 装配笔记">
-<meta property="og:url" content="http://yoursite.com/2018/08/13/VPS 装配笔记/index.html">
+<meta property="og:title" content="ttRSS 的搭建">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/ttRSS 的搭建/index.html">
 <meta property="og:site_name" content="Teishikaa&#39;s Blog">
-<meta property="og:description" content="VPS Configuration">
+<meta property="og:description" content="ttRSS 搭建指南">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T17:59:01.291Z">
+<meta property="og:image" content="http://yoursite.com/images/15091878055188.png">
+<meta property="og:updated_time" content="2018-08-13T18:13:20.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VPS 装配笔记">
-<meta name="twitter:description" content="VPS Configuration">
+<meta name="twitter:title" content="ttRSS 的搭建">
+<meta name="twitter:description" content="ttRSS 搭建指南">
+<meta name="twitter:image" content="http://yoursite.com/images/15091878055188.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/13/VPS 装配笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/14/ttRSS 的搭建/"/>
 
 
 
 
 
-  <title>VPS 装配笔记 | Teishikaa's Blog</title>
+  <title>ttRSS 的搭建 | Teishikaa's Blog</title>
   
 
 
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/VPS 装配笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/ttRSS 的搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="changzhiga">
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">VPS 装配笔记</h1>
+          <h1 class="post-title" itemprop="name headline">ttRSS 的搭建</h1>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T23:31:58+08:00">
-                2018-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T02:01:52+08:00">
+                2018-08-14
               </time>
             
 
@@ -359,7 +361,7 @@
 
           
               <div class="post-description">
-                  VPS Configuration
+                  ttRSS 搭建指南
               </div>
           
 
@@ -376,56 +378,12 @@
       
 
       
-        <h2 id="1-前期"><a href="#1-前期" class="headerlink" title="1. 前期"></a>1. 前期</h2><p>按照既定格式为 VPS 主机命名，约定格式为：</p>
-<p><strong><code>主机商/平台名三位缩略字母 - 主机所在国家/城市名两位缩略字母 + 数字编号</code></strong></p>
-<p>如 Google Cloud Platform 为 <code>gcp</code>，GigsgigsCloud 为 <code>ggs</code>，Vultr 为 <code>vtr</code>，以此类推；地名如 Taiwan 为 <code>tw</code>，Tokyo 为 <code>tk</code>。故有 <code>gcp-tw</code>、<code>ggs-hk</code>、<code>vtr-nj1</code> 等，主机名全部使用小写。</p>
-<p>考虑到部分主机商的 CentOS 和 Debian 有大大小小的问题，故操作系统首选 Ubuntu 最新版本，保守选择 Ubuntu 16.04 LTS（Xenial Xerus）。</p>
-<h2 id="2-关键信息预存"><a href="#2-关键信息预存" class="headerlink" title="2. 关键信息预存"></a>2. 关键信息预存</h2><p>首先存储 IP 可以方便后续的使用。主机正常运行后，使用 LaunchBar 的 Snippets 存储 各个主机的外部 IP，以主机名的 <strong><code>首字母（重复则使用前两位） + 地名（数字编码）</code></strong> 共三或四位字母作为 Snippets 的快捷短语；如 <code>gtw</code>，<code>gghk</code>。</p>
-<h2 id="3-SSH-连接"><a href="#3-SSH-连接" class="headerlink" title="3. SSH 连接"></a>3. SSH 连接</h2><ol>
-<li><p>生成公钥和私钥，必要时将公钥复制到主机的 SSH 添加处（<code>~/.ssh/authorized_keys</code>）。</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f ~/.ssh/[[主机名]] -C [[用户名]]</span><br></pre></td></tr></table></figure>
-<p> <code>[[主机名]]</code> 按照前期命名填写，<code>[[用户名]]</code> 为 <code>changzhiga</code>。</p>
-</li>
-<li><p>某些主机可能需要通过 <code>ssh-copy-id</code> 命令添加公钥：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/[[主机对应的公钥]] [[用户名]]@IP</span><br></pre></td></tr></table></figure>
-<p> 公钥文件后缀为 <code>.pub</code>，<code>[[用户名]]</code> 为 <code>changzhiga</code>。</p>
-</li>
-<li><p>通过终端 SSH 登录 root 账户，使用 Auto Config 添加主机到 HyperApp。观察 HyperApp 的 Docker 状态是否异常，如异常则需考虑重新安装系统；一般情况下会显示无法找到 <code>docker</code> 命令，说明系统需要安装 Docker。同时在终端测试 <code>sudo</code> 和 <code>docker</code> 命令，进一步确认系统是否正常。</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@IP</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="4">
-<li><p>确认系统正常后，在 root 账户下添加自定义用户并为其赋予 root 权限：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser [[用户名]] \</span><br><span class="line">usermod -aG sudo [[用户名]] \</span><br><span class="line">su - [[用户名]]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置免密码登录</p>
-<p> 往<code>~/.ssh/config</code>配置文件添加 ssh 服务器信息即可实现别名登录而无需记住用户名和 IP 地址：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br></pre></td></tr></table></figure>
-<p> 编辑如下：</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host    alias   # 自定义别名</span><br><span class="line">HostName    hostname    # ssh 服务器的 IP 或域名</span><br><span class="line">Port    22  # ssh 服务器的端口，默认为22</span><br><span class="line">User    root    # ssh 服务器用户名</span><br><span class="line">IdentityFile    ~/.ssh/id_rsa   # 第一步生成的公钥文件对应的私钥文件</span><br></pre></td></tr></table></figure>
-<p> 最终，只需要在 Terminal 输入<code>ssh alias</code>即可。</p>
-</li>
-<li><p>延长 SSH 会话超时时间</p>
-</li>
-</ol>
-<ul>
-<li><p>服务器端配置</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-<p>  找到以下配置（默认被注释掉，需要取消注释）：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 30</span><br><span class="line">ClientAliveCountMax 3</span><br></pre></td></tr></table></figure>
-<p>  <strong>ClientAliveInterval</strong>：SSH Server 与 Client 的心跳超时时间。当客户端没有指令过来，Server 间隔 ClientAliveInterval 的时间（单位秒）会发一个空包到 Client 来维持心跳，保证 Session 有效。   </p>
-<p>  <strong>ClientAliveCountMax</strong>：当心跳包发送失败时重试的次数，比如设置成了3，如果 Server 向 Client 连续发三次心跳包都失败了，就会断开这个 Session 连接。  </p>
-<p>  修改完后重启 ssh 以使之生效：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>客户端配置</p>
-<p>  比起修改服务器端的配置，修改客户端更加容易一些。</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh/config</span><br></pre></td></tr></table></figure>
-<p>  修改以下内容：  </p>
-  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host myhostshortcut</span><br><span class="line">HostName myhost.com</span><br><span class="line">User root</span><br><span class="line">ServerAliveInterval 30</span><br><span class="line">ServerAliveCountMax 3</span><br></pre></td></tr></table></figure>
-</li>
+        <h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h1><ul>
+<li>Docker CE：提供 Docker 环境</li>
+<li>PostgreSQL 数据库：存储 RSS 服务运行所需的记录；也可以使用 MySQL，但是前者的性能更好</li>
+<li>Tiny Tiny RSS</li>
 </ul>
-<h2 id="4-一系列初始化脚本"><a href="#4-一系列初始化脚本" class="headerlink" title="4. 一系列初始化脚本"></a>4. 一系列初始化脚本</h2><h3 id="4-1-安装-Docker"><a href="#4-1-安装-Docker" class="headerlink" title="4.1 安装 Docker"></a>4.1 安装 Docker</h3><ol>
+<h2 id="1-1-安装-Docker-CE："><a href="#1-1-安装-Docker-CE：" class="headerlink" title="1.1 安装 Docker CE："></a>1.1 安装 Docker CE：</h2><ol>
 <li><p>Ubuntu</p>
 <ul>
 <li><p>设置仓库</p>
@@ -499,17 +457,35 @@
 </ul>
 </li>
 </ol>
-<h3 id="4-2-使用-HyperApp-自动安装-BBR。"><a href="#4-2-使用-HyperApp-自动安装-BBR。" class="headerlink" title="4.2 使用 HyperApp 自动安装 BBR。"></a>4.2 使用 HyperApp 自动安装 BBR。</h3><h3 id="4-3-使用一键脚本安装"><a href="#4-3-使用一键脚本安装" class="headerlink" title="4.3 使用一键脚本安装"></a>4.3 使用一键脚本安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O ssss-U.sh https://raw.githubusercontent.com/uselibrary/Update_VPS/master/ssss-U.sh &amp;&amp; chmod +x ssss-U.sh &amp;&amp; bash ssss-U.sh</span><br></pre></td></tr></table></figure>
-<h2 id="5-后期"><a href="#5-后期" class="headerlink" title="5. 后期"></a>5. 后期</h2><ol>
-<li><p>使用 HyperApp 安装各种所需的 App。</p>
+<h2 id="1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><a href="#1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境：" class="headerlink" title="1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境："></a>1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull nornagon/postgres \</span><br><span class="line">sudo docker run -d --name ttrssdb nornagon/postgres</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-安装-Tiny-Tiny-RSS-本体的镜像："><a href="#1-3-安装-Tiny-Tiny-RSS-本体的镜像：" class="headerlink" title="1.3 安装 Tiny Tiny RSS 本体的镜像："></a>1.3 安装 Tiny Tiny RSS 本体的镜像：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull fischerman/docker-ttrss \</span><br><span class="line">sudo docker run -d --link ttrssdb:db -p 8080:80 -e SELF_URL_PATH=http://[[IP_ADDRESS]]:8080 fischerman/docker-ttrss</span><br></pre></td></tr></table></figure>
+<p>其中:</p>
+<ul>
+<li><p><code>-p 8080:80</code>：该参数表明，将该容器内应用的 <code>80</code> 端口（冒号后）映射到主机的 <code>80</code> 端口（冒号前）上；如果主机还需运行其他 80 端口的服务（如博客建站），则应将冒号前的值改为一个未被占用的端口；例如，<code>-p 8080:80</code> 将启用主机的 <code>8080</code> 端口。</p>
 </li>
-<li><p>在 <code>~/.ssh/config</code> 中添加 SSH 登录的快捷短语，同 Snippets 的规则一致。</p>
+<li><p><code>-e SELF_URL_PATH=http://[[IP_ADDRESS]]:8080</code>：该参数表明，该 Tiny Tiny RSS 应用将可从 <code>http://[[IP_ADDRESS]]</code> 访问；如果在上一步保持了默认的端口设置，则直接将上述网址换为你主机的 IP 地址（或解析至该主机的域名）即可，否则，应在地址之后进一步表明使用的端口，如：<code>http://xxx.xxx.xxx.xxx:8080</code>。</p>
 </li>
-<li><p>Surge 中的节点命名规则为：</p>
-<p> <strong><code>国旗 + 大写主机名</code></strong></p>
-<p> 如 <code>🇼🇸 GCP-TW</code>、<code>🇭🇰 GGS-HK</code>。</p>
-</li>
-</ol>
+</ul>
+<h1 id="2-用插件添加主题、全文输出和多客户端支持"><a href="#2-用插件添加主题、全文输出和多客户端支持" class="headerlink" title="2. 用插件添加主题、全文输出和多客户端支持"></a>2. 用插件添加主题、全文输出和多客户端支持</h1><h2 id="2-1-安装主题（以仿-Feedly-主题为例）"><a href="#2-1-安装主题（以仿-Feedly-主题为例）" class="headerlink" title="2.1 安装主题（以仿 Feedly 主题为例）"></a>2.1 安装主题（以仿 Feedly 主题为例）</h2><p>获取主题文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/levito/tt-rss-feedly-theme/archive/master.zip</span><br></pre></td></tr></table></figure>
+<p>解压缩主题文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unzip // 如果没有安装 unzip</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip master.zip</span><br></pre></td></tr></table></figure>
+<p>拷贝文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps # 查看当前 Docker 容器列表，找到 IMAGE 一列为 `[[fischerman/docker-ttrss]]` 的记录，复制其 `[[CONTAINER ID]]`</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15091878055188.png" alt="15091878055188"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp tt-rss-feedly-theme-master/feedly.css [[CONTAINER ID]]:/var/www/themes</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp tt-rss-feedly-theme-master/feedly [[CONTAINER ID]]:/var/www/themes</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-配置-RSS-全文输出"><a href="#2-2-配置-RSS-全文输出" class="headerlink" title="2.2 配置 RSS 全文输出"></a>2.2 配置 RSS 全文输出</h2><p>注册 Mercury 并复制其 API 密钥，可以在 Web Parser 页面看到。</p>
+<p>为 Tiny Tiny RSS 安装全文输出插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/WangQiru/mercury_fulltext.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp mercury_fulltext [[CONTAINER ID]]:/var/www/plugins</span><br></pre></td></tr></table></figure>
+<p>在 RSS 设置配置 mercury_fulltext 插件。</p>
+<h2 id="2-3-多客户端支持（模拟-Fever）"><a href="#2-3-多客户端支持（模拟-Fever）" class="headerlink" title="2.3 多客户端支持（模拟 Fever）"></a>2.3 多客户端支持（模拟 Fever）</h2><p>安装插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/rannen/tinytinyrss-fever-plugin.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp ~/tinytinyrss-fever-plugin/fever [[CONTAINER ID]]:/var/www/plugins</span><br></pre></td></tr></table></figure>
+<p>安装后，在 Tiny Tiny RSS 的设置页面启用名为 fever 的插件。保存后，再次进入设置时，Preference 选项卡下会多出一个名为 Fever Emulation 的板块。在该板块的文本框中，设置一个专用于该插件的密码，然后点击 Save。该文本框下方同时给出了一个独立的服务器地址，其格式类似于 <code>http://rss.example.org/plugins/fever/</code>； 将其记下以备后用。</p>
+<p>这时，在 Reeder 等 app 中，只要在添加 RSS 账号时选择 Fever，在服务器地址栏填入上述地址，用户名填写 <code>admin</code>，密码是以上设定的密码，即可配合这些你惯用的 app 使用 Tiny Tiny RSS 了；文件夹、标为已读、星标等功能均被良好支持。</p>
 
       
     </div>
@@ -527,7 +503,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vps/" rel="tag"># vps</a>
+            <a href="/tags/ttrss/" rel="tag"># ttrss</a>
           
         </div>
       
@@ -540,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/13/Raspberrypi 装配笔记/" rel="next" title="Raspberrypi 装配笔记">
-                <i class="fa fa-chevron-left"></i> Raspberrypi 装配笔记
+              <a href="/2018/08/13/VPS 装配笔记/" rel="next" title="VPS 装配笔记">
+                <i class="fa fa-chevron-left"></i> VPS 装配笔记
               </a>
             
           </div>
@@ -550,8 +526,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/14/ttRSS 的搭建/" rel="prev" title="ttRSS 的搭建">
-                ttRSS 的搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/14/下载任意版本的 iOS App/" rel="prev" title="下载任意版本的 iOS App">
+                下载任意版本的 iOS App <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -698,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前期"><span class="nav-number">1.</span> <span class="nav-text">1. 前期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-关键信息预存"><span class="nav-number">2.</span> <span class="nav-text">2. 关键信息预存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-SSH-连接"><span class="nav-number">3.</span> <span class="nav-text">3. SSH 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-一系列初始化脚本"><span class="nav-number">4.</span> <span class="nav-text">4. 一系列初始化脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-安装-Docker"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 安装 Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-使用-HyperApp-自动安装-BBR。"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 使用 HyperApp 自动安装 BBR。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-使用一键脚本安装"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 使用一键脚本安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-后期"><span class="nav-number">5.</span> <span class="nav-text">5. 后期</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1. 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-安装-Docker-CE："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 安装 Docker CE：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><span class="nav-number">1.2.</span> <span class="nav-text">1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-安装-Tiny-Tiny-RSS-本体的镜像："><span class="nav-number">1.3.</span> <span class="nav-text">1.3 安装 Tiny Tiny RSS 本体的镜像：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-用插件添加主题、全文输出和多客户端支持"><span class="nav-number">2.</span> <span class="nav-text">2. 用插件添加主题、全文输出和多客户端支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-安装主题（以仿-Feedly-主题为例）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 安装主题（以仿 Feedly 主题为例）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-配置-RSS-全文输出"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 配置 RSS 全文输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-多客户端支持（模拟-Fever）"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 多客户端支持（模拟 Fever）</span></a></li></ol></li></ol></div>
             
 
           </div>

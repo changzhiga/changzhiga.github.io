@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Teishikaa&#39;s Blog">
 <meta property="og:description" content="Raspberrypi Configuration">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T16:14:42.972Z">
+<meta property="og:updated_time" content="2018-08-13T17:29:13.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberrypi 装配笔记">
 <meta name="twitter:description" content="Raspberrypi Configuration">
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,12 +191,62 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
           </a>
         </li>
       
@@ -238,7 +288,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="changzhiga">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -343,64 +393,36 @@
 <li><p>从树莓派官网下载最新的 Raspbian 系统镜像，通过 Etcher 烧录进 TF 卡中；如果不使用最新的 Debian 系统，可以烧录硬盘备份的 Debian Jessie 镜像。</p>
 </li>
 <li><p>烧制完成后，进入系统根目录 <code>boot</code>，新建无后缀的空脚本文件 <code>ssh</code>，再新建名为 <code>wpa_supplicant.conf</code> 的无线网络配置文件，其内容如下：</p>
-<pre><code> country=CN
- ctrl_interface=DIR=/var/run/wpa_supplicant
- GROUP=netdev
- update_config=1
- network={
-     ssid=&quot;[[Wi-Fi 名称]]&quot;
-     psk=&quot;[[Wi-Fi 密码]]&quot;
-     key_mgmt=WPA-PSK
-     priority=1
- }
-</code></pre></li>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">country</span>=CN</span><br><span class="line"><span class="attribute">ctrl_interface</span>=DIR=/var/run/wpa_supplicant</span><br><span class="line"><span class="attribute">GROUP</span>=netdev</span><br><span class="line"><span class="attribute">update_config</span>=1</span><br><span class="line">network=&#123;</span><br><span class="line">    <span class="attribute">ssid</span>=<span class="string">"[[Wi-Fi 名称]]"</span></span><br><span class="line">    <span class="attribute">psk</span>=<span class="string">"[[Wi-Fi 密码]]"</span></span><br><span class="line">    <span class="attribute">key_mgmt</span>=WPA-PSK</span><br><span class="line">    <span class="attribute">priority</span>=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>完成以上步骤之后，即可拔出 TF 卡，将其插入树莓派中，接通电源，等待其自动连接上局域网。</p>
 </li>
 </ol>
 <h2 id="2-基础配置"><a href="#2-基础配置" class="headerlink" title="2 基础配置"></a>2 基础配置</h2><h3 id="2-1-SSH-连接"><a href="#2-1-SSH-连接" class="headerlink" title="2.1 SSH 连接"></a>2.1 SSH 连接</h3><p>在终端输入 <code>ssh pi@192.168.X.X</code>，初始密码为 <code>raspberry</code>。亦可参照 VPS 配置 SSH 的做法生成公钥和私钥来创建快捷短语。</p>
-<h3 id="2-2-修改管理员密码"><a href="#2-2-修改管理员密码" class="headerlink" title="2.2 修改管理员密码"></a>2.2 修改管理员密码</h3><pre><code class="shell">passwd pi
-</code></pre>
+<h3 id="2-2-修改管理员密码"><a href="#2-2-修改管理员密码" class="headerlink" title="2.2 修改管理员密码"></a>2.2 修改管理员密码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd pi</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-Samba"><a href="#2-3-Samba" class="headerlink" title="2.3 Samba"></a>2.3 Samba</h3><p>修改系统软件源为阿里云：</p>
-<pre><code>sudo nano /etc/apt/sources.list
-</code></pre><p>将 deb 后的 URL 修改为 <a href="http://mirrors.aliyun.com/raspbian/raspbian/。" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/。</a></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.<span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+<p>将 deb 后的 URL 修改为 <a href="http://mirrors.aliyun.com/raspbian/raspbian/。" target="_blank" rel="noopener">http://mirrors.aliyun.com/raspbian/raspbian/。</a></p>
 <ul>
 <li>刷新软件列表：</li>
 </ul>
-<pre><code>sudo apt-get update
-</code></pre><ul>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>安装 Samba 及其依赖：</li>
 </ul>
-<pre><code class="shell">sudo apt-get install samba samba-common-bin
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install samba samba-common-bin</span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改 Samba 的配置文件：</li>
 </ul>
-<pre><code class="shell">sudo nano /etc/samba/smb.conf
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 <p>在配置文件的最后加上：</p>
-<pre><code>[pi]
-
-    path = /home/pi/
-
-    valid users = pi
-
-    browseable = Yes
-
-    writeable = Yes
-
-    writelist = pi
-
-    create mask = 0777
-
-    directory mask = 0777
-</code></pre><p>保存，重新运行 Samba 服务：</p>
-<pre><code class="shell">sudo /etc/init.d/samba restart
-</code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[pi]</span><br><span class="line"></span><br><span class="line">    path = /home/pi/</span><br><span class="line"></span><br><span class="line">    valid<span class="built_in"> users </span>= pi</span><br><span class="line"></span><br><span class="line">    browseable = <span class="literal">Yes</span></span><br><span class="line"></span><br><span class="line">    writeable = <span class="literal">Yes</span></span><br><span class="line"></span><br><span class="line">    writelist = pi</span><br><span class="line"></span><br><span class="line">    create mask = 0777</span><br><span class="line"></span><br><span class="line">    directory mask = 0777</span><br></pre></td></tr></table></figure>
+<p>保存，重新运行 Samba 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/samba restart</span><br></pre></td></tr></table></figure>
 <ul>
 <li>添加 pi 用户为 Samba 用户：</li>
 </ul>
-<pre><code class="shell">sudo smbpasswd -a pi
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a pi</span><br></pre></td></tr></table></figure>
 <h2 id="3-功能配置"><a href="#3-功能配置" class="headerlink" title="3 功能配置"></a>3 功能配置</h2><h3 id="3-1-Homebridge"><a href="#3-1-Homebridge" class="headerlink" title="3.1 Homebridge"></a>3.1 Homebridge</h3><p>项目地址：</p>
 <ul>
 <li><p><a href="https://github.com/nfarina/homebridge" target="_blank" rel="noopener">Homebridge</a></p>
@@ -414,93 +436,25 @@
 </ul>
 <ol>
 <li><p>安装 NodeJS：</p>
-<pre><code class="shell"> curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - 
- sudo apt-get install -y nodejs
-</code></pre>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash - </span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 Avahi：</p>
-<pre><code class="shell"> sudo apt-get install libavahi-compat-libdnssd-dev
-</code></pre>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libavahi-compat-libdnssd-dev</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol start="3">
 <li><p>安装 Homebridge 本体和插件：</p>
-<pre><code class="shell"> sudo npm install -g --unsafe-perm homebridge # Stretch 需要加入 --unsafe-perm 参数   
- sudo npm install -g --unsafe-perm homebridge-mi-aqara # Aqara 平台插件，用于网关及其连接件      
- sudo npm install -g --unsafe-perm homebridge-yeelight # Yeelight 灯光系统插件
- sudo npm install -g --unsafe-perm homebridge-mi-philips-light # Philips 灯光系统插件
-</code></pre>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g --unsafe-perm homebridge # Stretch 需要加入 --unsafe-perm 参数   </span><br><span class="line">sudo npm install -g --unsafe-perm homebridge-mi-aqara # Aqara 平台插件，用于网关及其连接件      </span><br><span class="line">sudo npm install -g --unsafe-perm homebridge-yeelight # Yeelight 灯光系统插件</span><br><span class="line">sudo npm install -g --unsafe-perm homebridge-mi-philips-light # Philips 灯光系统插件</span><br></pre></td></tr></table></figure>
 <p> 安装完成后运行 <code>homebridge -D</code> 检查是否能正常运行。</p>
 </li>
 <li><p>编辑配置文件：</p>
-<pre><code class="shell"> mkdir ~/.homebridge # 如果已经创建则跳过
- cd ~/.homebridge
- sudo nano config.json
-</code></pre>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.homebridge # 如果已经创建则跳过</span><br><span class="line">cd ~/.homebridge</span><br><span class="line">sudo nano config.json</span><br></pre></td></tr></table></figure>
 <p> 编辑配置文件如下：</p>
-<pre><code class="json"> {
-     &quot;bridge&quot;: {
-         &quot;name&quot;: &quot;HomeBridge&quot;,
-         &quot;username&quot;: &quot;B8:27:EB:EE:AF:1B&quot;,
-         &quot;port&quot;: 51888,
-         &quot;pin&quot;: &quot;199-50-228&quot;
-     },
-     &quot;platforms&quot;: [{
-         &quot;platform&quot;: &quot;MiAqaraPlatform&quot;,
-         &quot;gateways&quot;: {
-             &quot;34ce009525c9&quot;: &quot;B51730D119334789&quot;
-         },
-         &quot;defaultValue&quot;: {
-             &quot;158d000227648c&quot;: {
-                 &quot;MotionSensor_MotionSensor&quot;: {
-                     &quot;name&quot;: &quot;Motion Sensor&quot;
-                 }
-             },
-             &quot;158d00019d3a9b&quot;: {
-                 &quot;Global&quot;: {
-                     &quot;disable&quot;: true 
-                 },
-                 &quot;Button_StatelessProgrammableSwitch&quot;: {
-                     &quot;name&quot;: &quot;Desktop Button&quot;,
-                     &quot;disable&quot;: false
-                 },
-                 &quot;Button_Switch_VirtualSinglePress&quot;: {
-                     &quot;name&quot;: &quot;Single Press&quot;
-                 },
-                 &quot;Button_Switch_VirtualDoublePress&quot;: {
-                     &quot;name&quot;: &quot;Double Press&quot;
-                 }
-             },
-             &quot;158d00019cb82c&quot;: {
-                 &quot;TemperatureAndHumiditySensor_TemperatureSensor&quot;: {
-                     &quot;name&quot;: &quot;Temperature&quot;
-                 },
-                 &quot;TemperatureAndHumiditySensor_HumiditySensor&quot;: {
-                     &quot;name&quot;: &quot;Humidity&quot;
-                 }
-             }
-         }
-     },
-         {
-             &quot;platform&quot;: &quot;yeelight&quot;,
-             &quot;name&quot;: &quot;Lightstrip&quot;   
-         },
-         {
-             &quot;platform&quot;: &quot;MiPhilipsLightPlatform&quot;,
-             &quot;deviceCfgs&quot;: [{
-             &quot;type&quot;: &quot;MiPhilipsSmartBulb&quot;,
-             &quot;ip&quot;: &quot;192.168.31.114&quot;,
-             &quot;token&quot;: &quot;7b2c6803b67b99f9b7a250cd919858dc&quot;,
-             &quot;lightName&quot;: &quot;Bulb&quot;,
-             &quot;lightDisable&quot;: false
-         }]
-         }
-     ]
- }
-</code></pre>
+ <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"bridge"</span>: &#123;</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"HomeBridge"</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"B8:27:EB:EE:AF:1B"</span>,</span><br><span class="line">        <span class="attr">"port"</span>: <span class="number">51888</span>,</span><br><span class="line">        <span class="attr">"pin"</span>: <span class="string">"199-50-228"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"platforms"</span>: [&#123;</span><br><span class="line">        <span class="attr">"platform"</span>: <span class="string">"MiAqaraPlatform"</span>,</span><br><span class="line">        <span class="attr">"gateways"</span>: &#123;</span><br><span class="line">            <span class="attr">"34ce009525c9"</span>: <span class="string">"B51730D119334789"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"defaultValue"</span>: &#123;</span><br><span class="line">            <span class="attr">"158d000227648c"</span>: &#123;</span><br><span class="line">                <span class="attr">"MotionSensor_MotionSensor"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Motion Sensor"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"158d00019d3a9b"</span>: &#123;</span><br><span class="line">                <span class="attr">"Global"</span>: &#123;</span><br><span class="line">                    <span class="attr">"disable"</span>: <span class="literal">true</span> </span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"Button_StatelessProgrammableSwitch"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Desktop Button"</span>,</span><br><span class="line">                    <span class="attr">"disable"</span>: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"Button_Switch_VirtualSinglePress"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Single Press"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"Button_Switch_VirtualDoublePress"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Double Press"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"158d00019cb82c"</span>: &#123;</span><br><span class="line">                <span class="attr">"TemperatureAndHumiditySensor_TemperatureSensor"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Temperature"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">"TemperatureAndHumiditySensor_HumiditySensor"</span>: &#123;</span><br><span class="line">                    <span class="attr">"name"</span>: <span class="string">"Humidity"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"platform"</span>: <span class="string">"yeelight"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Lightstrip"</span>   </span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"platform"</span>: <span class="string">"MiPhilipsLightPlatform"</span>,</span><br><span class="line">            <span class="attr">"deviceCfgs"</span>: [&#123;</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"MiPhilipsSmartBulb"</span>,</span><br><span class="line">            <span class="attr">"ip"</span>: <span class="string">"192.168.31.114"</span>,</span><br><span class="line">            <span class="attr">"token"</span>: <span class="string">"7b2c6803b67b99f9b7a250cd919858dc"</span>,</span><br><span class="line">            <span class="attr">"lightName"</span>: <span class="string">"Bulb"</span>,</span><br><span class="line">            <span class="attr">"lightDisable"</span>: <span class="literal">false</span></span><br><span class="line">        &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 保存退出，试运行：<code>homebridge -D</code></p>
 </li>
 <li><p>使用 Screen 保持 Homebridge 在后台运行：</p>
-<pre><code class="shell"> sudo apt-get install screen
-</code></pre>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install screen</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>安装完后，运行 <code>screen -S homebdg</code>，在窗口里运行 Homebridge。</p>
@@ -608,6 +562,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="changzhiga" />
+            
               <p class="site-author-name" itemprop="name">changzhiga</p>
               <p class="site-description motion-element" itemprop="description">Personal Blog</p>
           </div>
@@ -619,7 +577,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +599,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -651,6 +609,16 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="changzhiga@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -712,7 +680,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -811,6 +779,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
