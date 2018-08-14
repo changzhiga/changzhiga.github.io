@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -84,11 +91,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="ttRSS 的搭建">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/ttRSS 的搭建/index.html">
-<meta property="og:site_name" content="Teishikaa&#39;s Blog">
+<meta property="og:site_name" content="TEISHIKAA">
 <meta property="og:description" content="ttRSS 搭建指南">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/15091878055188.png">
-<meta property="og:updated_time" content="2018-08-13T18:39:55.490Z">
+<meta property="og:updated_time" content="2018-08-14T08:39:10.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ttRSS 的搭建">
 <meta name="twitter:description" content="ttRSS 搭建指南">
@@ -128,7 +135,7 @@
 
 
 
-  <title>ttRSS 的搭建 | Teishikaa's Blog</title>
+  <title>ttRSS 的搭建 | TEISHIKAA</title>
   
 
 
@@ -158,12 +165,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Teishikaa's Blog</span>
+        <span class="site-title">TEISHIKAA</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">Make Impossible Possible</p>
       
   </div>
 
@@ -254,9 +261,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -294,7 +335,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Teishikaa's Blog">
+      <meta itemprop="name" content="TEISHIKAA">
     </span>
 
     
@@ -358,6 +399,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,040
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
           
               <div class="post-description">
@@ -378,12 +450,12 @@
       
 
       
-        <h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h1><ul>
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
 <li>Docker CE：提供 Docker 环境</li>
 <li>PostgreSQL 数据库：存储 RSS 服务运行所需的记录；也可以使用 MySQL，但是前者的性能更好</li>
 <li>Tiny Tiny RSS</li>
 </ul>
-<h2 id="1-1-安装-Docker-CE："><a href="#1-1-安装-Docker-CE：" class="headerlink" title="1.1 安装 Docker CE："></a>1.1 安装 Docker CE：</h2><ol>
+<h2 id="安装-Docker-CE："><a href="#安装-Docker-CE：" class="headerlink" title="安装 Docker CE："></a>安装 Docker CE：</h2><ol>
 <li><p>Ubuntu</p>
 <ul>
 <li><p>设置仓库</p>
@@ -407,7 +479,7 @@
 <li><p>安装 Docker</p>
 <ul>
 <li><p>配置稳定版的仓库：</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line"><span class="meta">$</span>(lsb_release -cs) \</span><br><span class="line">stable"</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line"><span class="meta">$</span><span class="bash">(lsb_release -cs) \</span></span><br><span class="line">stable"</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装 Docker CE</p>
 <ul>
@@ -457,8 +529,8 @@
 </ul>
 </li>
 </ol>
-<h2 id="1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><a href="#1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境：" class="headerlink" title="1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境："></a>1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull nornagon/postgres \</span><br><span class="line">sudo docker run -d --name ttrssdb nornagon/postgres</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-安装-Tiny-Tiny-RSS-本体的镜像："><a href="#1-3-安装-Tiny-Tiny-RSS-本体的镜像：" class="headerlink" title="1.3 安装 Tiny Tiny RSS 本体的镜像："></a>1.3 安装 Tiny Tiny RSS 本体的镜像：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull fischerman/docker-ttrss \</span><br><span class="line">sudo docker run -d --link ttrssdb:db -p 8080:80 -e SELF_URL_PATH=http://[[IP_ADDRESS]]:8080 fischerman/docker-ttrss</span><br></pre></td></tr></table></figure>
+<h2 id="安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><a href="#安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境：" class="headerlink" title="安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境："></a>安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull nornagon/postgres \</span><br><span class="line">sudo docker run -d --name ttrssdb nornagon/postgres</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Tiny-Tiny-RSS-本体的镜像："><a href="#安装-Tiny-Tiny-RSS-本体的镜像：" class="headerlink" title="安装 Tiny Tiny RSS 本体的镜像："></a>安装 Tiny Tiny RSS 本体的镜像：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull fischerman/docker-ttrss \</span><br><span class="line">sudo docker run -d --link ttrssdb:db -p 8080:80 -e SELF_URL_PATH=http://[[IP_ADDRESS]]:8080 fischerman/docker-ttrss</span><br></pre></td></tr></table></figure>
 <p>其中:</p>
 <ul>
 <li><p><code>-p 8080:80</code>：该参数表明，将该容器内应用的 <code>80</code> 端口（冒号后）映射到主机的 <code>80</code> 端口（冒号前）上；如果主机还需运行其他 80 端口的服务（如博客建站），则应将冒号前的值改为一个未被占用的端口；例如，<code>-p 8080:80</code> 将启用主机的 <code>8080</code> 端口。</p>
@@ -466,7 +538,7 @@
 <li><p><code>-e SELF_URL_PATH=http://[[IP_ADDRESS]]:8080</code>：该参数表明，该 Tiny Tiny RSS 应用将可从 <code>http://[[IP_ADDRESS]]</code> 访问；如果在上一步保持了默认的端口设置，则直接将上述网址换为你主机的 IP 地址（或解析至该主机的域名）即可，否则，应在地址之后进一步表明使用的端口，如：<code>http://xxx.xxx.xxx.xxx:8080</code>。</p>
 </li>
 </ul>
-<h1 id="2-用插件添加主题、全文输出和多客户端支持"><a href="#2-用插件添加主题、全文输出和多客户端支持" class="headerlink" title="2. 用插件添加主题、全文输出和多客户端支持"></a>2. 用插件添加主题、全文输出和多客户端支持</h1><h2 id="2-1-安装主题（以仿-Feedly-主题为例）"><a href="#2-1-安装主题（以仿-Feedly-主题为例）" class="headerlink" title="2.1 安装主题（以仿 Feedly 主题为例）"></a>2.1 安装主题（以仿 Feedly 主题为例）</h2><p>下载主题文件：<a href="https://www.dropbox.com/s/88olyj3dsmmr23t/tt-rss-feedly-theme-1.3.0-for-ttrss-17.4.0.zip?dl=0" target="_blank" rel="noopener">tt-rss-feedly-theme-1.3.0</a></p>
+<h1 id="用插件添加主题、全文输出和多客户端支持"><a href="#用插件添加主题、全文输出和多客户端支持" class="headerlink" title="用插件添加主题、全文输出和多客户端支持"></a>用插件添加主题、全文输出和多客户端支持</h1><h2 id="安装主题（以仿-Feedly-主题为例）"><a href="#安装主题（以仿-Feedly-主题为例）" class="headerlink" title="安装主题（以仿 Feedly 主题为例）"></a>安装主题（以仿 Feedly 主题为例）</h2><p>下载主题文件：<a href="https://www.dropbox.com/s/88olyj3dsmmr23t/tt-rss-feedly-theme-1.3.0-for-ttrss-17.4.0.zip?dl=0" target="_blank" rel="noopener">tt-rss-feedly-theme-1.3.0</a></p>
 <p>解压缩主题文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install unzip // 如果没有安装 unzip</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip master.zip</span><br></pre></td></tr></table></figure>
@@ -475,12 +547,12 @@
 <p><img src="/images/15091878055188.png" alt="15091878055188"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp tt-rss-feedly-theme-master/feedly.css [[CONTAINER ID]]:/var/www/themes</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp tt-rss-feedly-theme-master/feedly [[CONTAINER ID]]:/var/www/themes</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-配置-RSS-全文输出"><a href="#2-2-配置-RSS-全文输出" class="headerlink" title="2.2 配置 RSS 全文输出"></a>2.2 配置 RSS 全文输出</h2><p>注册 Mercury 并复制其 API 密钥，可以在 Web Parser 页面看到。</p>
+<h2 id="配置-RSS-全文输出"><a href="#配置-RSS-全文输出" class="headerlink" title="配置 RSS 全文输出"></a>配置 RSS 全文输出</h2><p>注册 Mercury 并复制其 API 密钥，可以在 Web Parser 页面看到。</p>
 <p>为 Tiny Tiny RSS 安装全文输出插件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/WangQiru/mercury_fulltext.git</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp mercury_fulltext [[CONTAINER ID]]:/var/www/plugins</span><br></pre></td></tr></table></figure>
 <p>在 RSS 设置配置 mercury_fulltext 插件。</p>
-<h2 id="2-3-多客户端支持（模拟-Fever）"><a href="#2-3-多客户端支持（模拟-Fever）" class="headerlink" title="2.3 多客户端支持（模拟 Fever）"></a>2.3 多客户端支持（模拟 Fever）</h2><p>安装插件：</p>
+<h2 id="多客户端支持（模拟-Fever）"><a href="#多客户端支持（模拟-Fever）" class="headerlink" title="多客户端支持（模拟 Fever）"></a>多客户端支持（模拟 Fever）</h2><p>安装插件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/rannen/tinytinyrss-fever-plugin.git</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp ~/tinytinyrss-fever-plugin/fever [[CONTAINER ID]]:/var/www/plugins</span><br></pre></td></tr></table></figure>
 <p>安装后，在 Tiny Tiny RSS 的设置页面启用名为 fever 的插件。保存后，再次进入设置时，Preference 选项卡下会多出一个名为 Fever Emulation 的板块。在该板块的文本框中，设置一个专用于该插件的密码，然后点击 Save。该文本框下方同时给出了一个独立的服务器地址，其格式类似于 <code>http://rss.example.org/plugins/fever/</code>； 将其记下以备后用。</p>
@@ -497,12 +569,30 @@
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    changzhiga
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/08/14/ttRSS 的搭建/" title="ttRSS 的搭建">http://yoursite.com/2018/08/14/ttRSS 的搭建/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/ttrss/" rel="tag"># ttrss</a>
+            <a href="/tags/ttrss/" rel="tag"><i class="fa fa-tag"></i> ttrss</a>
           
         </div>
       
@@ -608,7 +698,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -630,7 +720,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -673,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装"><span class="nav-number">1.</span> <span class="nav-text">1. 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-安装-Docker-CE："><span class="nav-number">1.1.</span> <span class="nav-text">1.1 安装 Docker CE：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><span class="nav-number">1.2.</span> <span class="nav-text">1.2 安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-安装-Tiny-Tiny-RSS-本体的镜像："><span class="nav-number">1.3.</span> <span class="nav-text">1.3 安装 Tiny Tiny RSS 本体的镜像：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-用插件添加主题、全文输出和多客户端支持"><span class="nav-number">2.</span> <span class="nav-text">2. 用插件添加主题、全文输出和多客户端支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-安装主题（以仿-Feedly-主题为例）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 安装主题（以仿 Feedly 主题为例）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-配置-RSS-全文输出"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 配置 RSS 全文输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-多客户端支持（模拟-Fever）"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 多客户端支持（模拟 Fever）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Docker-CE："><span class="nav-number">1.1.</span> <span class="nav-text">安装 Docker CE：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-PostgreSQL-的-Docker-镜像，此镜像已预先配置完成以直接配合-RSS-镜像使用的数据库环境："><span class="nav-number">1.2.</span> <span class="nav-text">安装 PostgreSQL 的 Docker 镜像，此镜像已预先配置完成以直接配合 RSS 镜像使用的数据库环境：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Tiny-Tiny-RSS-本体的镜像："><span class="nav-number">1.3.</span> <span class="nav-text">安装 Tiny Tiny RSS 本体的镜像：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用插件添加主题、全文输出和多客户端支持"><span class="nav-number">2.</span> <span class="nav-text">用插件添加主题、全文输出和多客户端支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装主题（以仿-Feedly-主题为例）"><span class="nav-number">2.1.</span> <span class="nav-text">安装主题（以仿 Feedly 主题为例）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-RSS-全文输出"><span class="nav-number">2.2.</span> <span class="nav-text">配置 RSS 全文输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多客户端支持（模拟-Fever）"><span class="nav-number">2.3.</span> <span class="nav-text">多客户端支持（模拟 Fever）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -866,6 +956,323 @@
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
 
 
 
@@ -887,3 +1294,7 @@
 
 </body>
 </html>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
